@@ -72,7 +72,7 @@ scm_version()
 
 		# If we are at a tagged commit (like "v2.6.30-rc6"), we ignore
 		# it, because this version is defined in the top level Makefile.
-		if [ -z "$(git describe --exact-match 2>/dev/null)" ]; then
+		#if [ -z "$(git describe --exact-match 2>/dev/null)" ]; then
 
 			# If only the short version is requested, don't bother
 			# running further git commands
@@ -82,13 +82,13 @@ scm_version()
 			fi
 			# If we are past a tagged commit (like
 			# "v2.6.30-rc5-302-g72357d5"), we pretty print it.
-			if atag="$(git describe 2>/dev/null)"; then
-				echo "$atag" | awk -F- '{printf("-%05d", $(NF-1))}'
-			fi
+		#	if atag="$(git describe 2>/dev/null)"; then
+		#		echo "$atag" | awk -F- '{printf("-%05d", $(NF-1))}'
+		#	fi
 
 			# Add -g and exactly 12 hex chars.
 			printf '%s%s' -g "$(echo $head | cut -c1-12)"
-		fi
+		#fi
 
 		# Check for uncommitted changes.
 		# This script must avoid any write attempt to the source tree,

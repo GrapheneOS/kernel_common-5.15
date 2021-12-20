@@ -258,6 +258,12 @@ void __read_overflow2(void) __compiletime_error("detected read beyond size of ob
 void __read_overflow3(void) __compiletime_error("detected read beyond size of object passed as 3rd parameter");
 void __write_overflow(void) __compiletime_error("detected write beyond size of object passed as 1st parameter");
 
+#ifdef CONFIG_FORTIFY_SOURCE_STRICT_STRING
+#define __string_size(p) __builtin_object_size(p, 1)
+#else
+#define __string_size(p) __builtin_object_size(p, 0)
+#endif
+
 #if !defined(__NO_FORTIFY) && defined(__OPTIMIZE__) && defined(CONFIG_FORTIFY_SOURCE)
 #include <linux/fortify-string.h>
 #endif

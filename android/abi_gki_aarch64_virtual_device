@@ -1087,7 +1087,6 @@
   vlan_vids_del_by_dev
 
 # required by virtio_net.ko
-  bpf_dispatcher_xdp_func
   bpf_master_redirect_enabled_key
   bpf_prog_add
   bpf_prog_put

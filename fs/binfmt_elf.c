@@ -1006,9 +1006,12 @@ out_free_interp:
 	   may depend on the personality.  */
 	SET_PERSONALITY2(*elf_ex, &arch_state);
 
-	if (bprm->compat_va_39_bit) {
-		set_thread_flag(TIF_39BIT);
-	}
+	#ifdef CONFIG_ARM64
+		if (bprm->compat_va_39_bit) {
+			set_thread_flag(TIF_39BIT);
+		}
+	#endif
+
 
 	if (elf_read_implies_exec(*elf_ex, executable_stack))
 		current->personality |= READ_IMPLIES_EXEC;

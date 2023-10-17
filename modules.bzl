@@ -8,6 +8,7 @@ This module contains a full list of kernel modules
 
 COMMON_GKI_MODULES_LIST = [
     # keep sorted
+    "crypto/sha1_generic.ko",
     "drivers/block/zram/zram.ko",
     "drivers/bluetooth/btbcm.ko",
     "drivers/bluetooth/btqca.ko",
